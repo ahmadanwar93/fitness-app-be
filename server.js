@@ -10,8 +10,13 @@ const startServer = async () => {
 
     await sequelize.sync({ alter: false });
 
-    app.listen(PORT, () => {
-      console.log(`✓ Server running on http://localhost:${PORT}`);
+    // app.listen(PORT, () => {
+    //   console.log(`✓ Server running on http://localhost:${PORT}`);
+    // });
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`✓ Server running on port ${PORT}`);
+      console.log(`✓ Environment: ${process.env.NODE_ENV || "development"}`);
+      console.log(`✓ Ready to accept connections`);
     });
   } catch (error) {
     console.error("✗ Failed to start server:", error);
